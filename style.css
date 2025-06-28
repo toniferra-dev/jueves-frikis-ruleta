@@ -1,11 +1,23 @@
 /* Estilos base para el cuerpo de la página */
 body {
     font-family: 'Inter', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     background-color: #1a202c; /* Equivalente a bg-gray-900 de Tailwind */
+    min-height: 100dvh;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 32rem; /* 512px - más apropiado para móviles */
+    margin: 0 auto;
+    min-height: calc(100dvh - 2rem);
+    gap: 1.5rem;
+    padding: 0.5rem 0;
 }
 
 /* Contenedor de la ruleta y su puntero superior */
@@ -30,4 +42,119 @@ canvas {
 h1 {
     font-family: 'Bangers', cursive;
     letter-spacing: 2px;
+}
+
+/* Estilos para el contenedor de resultados de Gemini */
+#gemini-result {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Mejoras responsive para móviles */
+.header-section {
+    margin-bottom: 0.5rem;
+}
+
+.roulette-container {
+    margin: 0 auto;
+    /* Asegurar que no se salga de la pantalla */
+    max-width: calc(100vw - 3rem);
+    max-height: calc(100vw - 3rem);
+}
+
+/* Media queries para diferentes alturas de pantalla */
+@media (max-height: 700px) {
+    #app {
+        gap: 1rem;
+        padding: 0;
+    }
+    
+    h1 {
+        font-size: 2.5rem !important; /* Más pequeño en pantallas bajas */
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+    }
+    
+    .roulette-container {
+        width: 16rem !important; /* 256px */
+        height: 16rem !important;
+        margin: 0.5rem auto;
+    }
+    
+    .roulette-container::before {
+        font-size: 36px; /* Flecha más pequeña */
+        top: -8px;
+    }
+}
+
+@media (max-height: 600px) {
+    #app {
+        gap: 0.75rem;
+    }
+    
+    h1 {
+        font-size: 2rem !important; /* text-3xl */
+        margin-bottom: 0.25rem;
+    }
+    
+    p {
+        font-size: 1.125rem !important; /* text-lg */
+        margin-bottom: 0.5rem;
+    }
+    
+    .roulette-container {
+        width: 14rem !important; /* 224px */
+        height: 14rem !important;
+        margin: 0.25rem auto;
+    }
+    
+    .roulette-container::before {
+        font-size: 32px;
+        top: -6px;
+    }
+    
+    #spin-button {
+        padding: 0.75rem 2rem !important;
+        font-size: 1.25rem !important;
+    }
+    
+    #result {
+        height: 3rem !important; /* Más compacto */
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-height: 500px) {
+    h1 {
+        font-size: 1.75rem !important; /* text-2xl */
+    }
+    
+    .roulette-container {
+        width: 12rem !important; /* 192px */
+        height: 12rem !important;
+    }
+    
+    #spin-button {
+        padding: 0.5rem 1.5rem !important;
+        font-size: 1.125rem !important;
+    }
+}
+
+/* Mejoras para el canvas - mantener aspecto y evitar desbordamiento */
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Asegurar que los botones no se salgan en móviles */
+#main-controls {
+    width: 100%;
+    max-width: 100%;
+}
+
+#spin-button {
+    max-width: calc(100vw - 4rem);
+    word-wrap: break-word;
 }
