@@ -31,9 +31,3 @@ h1 {
     font-family: 'Bangers', cursive;
     letter-spacing: 2px;
 }
-
-/* Estilos para el contenedor de resultados de Gemini */
-#gemini-result {
-    max-height: 200px;
-    overflow-y: auto;
-}
